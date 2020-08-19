@@ -1,0 +1,32 @@
+php_flag display_errors on
+SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteBase /hellochat/src/
+
+
+RewriteRule ^api\/[vV](\d*\.?\d*)\/cronjob\/clean$ V$1/API/index.php?module=conversations&action=clean [L]
+RewriteRule ^api\/[vV](\d*\.?\d*)\/(.+)\/previous\/([0-9]+)\/([0-9]+)$ V$1/API/index.php?module=$2&collectionId=$3&entityId=$4&previous=true [L]
+RewriteRule ^api\/[vV](\d*\.?\d*)\/(.+)\/all\/([0-9]+)$ V$1/API/index.php?module=$2&collectionId=$3&allConversation=true [L]
+RewriteRule ^api\/[vV](\d*\.?\d*)\/(.+)\/latest\/([0-9]+)\/([0-9]+)$ V$1/API/index.php?module=$2&collectionId=$3&entityId=$4&latest=true [L]
+RewriteRule ^api\/[vV](\d*\.?\d*)\/(.+)\/latest\/([0-9]+)$ V$1/API/index.php?module=$2&entityId=$3&latest=true [L]
+RewriteRule ^api\/[vV](\d*\.?\d*)\/(.+)\/page\/([0-9]+)$ V$1/API/index.php?module=$2&page=$3 [L]
+RewriteRule ^api\/[vV](\d*\.?\d*)\/users\/ping\/([0-9]+)$ V$1/API/index.php?module=users&entityId=$2&action=ping [L]
+RewriteRule ^api\/[vV](\d*\.?\d*)\/(.+)\/([0-9]+)$ V$1/API/index.php?module=$2&entityId=$3 [L]
+RewriteRule ^api\/[vV](\d*\.?\d*)\/(.+)\/(.+)$ V$1/API/index.php?module=$2&action=$3 [L]
+RewriteRule ^api\/[vV](\d*\.?\d*)\/(.+)$ V$1/API/index.php?module=$2 [L]
+
+
+
+#RewriteRule ^v(\d*\.?\d*)\/messages\/([0-9]+)$ php/V$1/HelloChat/Controllers/Message.php?messageId=$2 [L]
+#RewriteRule ^v(\d*\.?\d*)\/messages/page\/([0-9]+)$ php/V$1/HelloChat/Controllers/Message.php?page=$2 [L]
+#RewriteRule ^v(\d*\.?\d*)\/messages$ php/V$1/HelloChat/Controllers/Message.php [L]
+
+#RewriteRule ^v(\d*\.?\d*)\/users$ php/V$1/HelloChat/Controllers/User.php [L]
+
+#RewriteRule ^v(\d*\.?\d*)\/sessions$ php/V$1/HelloChat/Controllers/Session.php [L]
+
+#RewriteRule ^v(\d*\.?\d*)\/sessions\/([0-9]+)$ php/V$1/HelloChat/Controllers/Session.php?sessionId=$2 [L]

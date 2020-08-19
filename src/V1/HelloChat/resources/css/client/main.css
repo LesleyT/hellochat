@@ -1,0 +1,135 @@
+/* GENERAL */
+
+:root {
+    --main-color: #0984e3;
+    --main-shade: #076dbb;
+    --secondary-color: #fdcb6e;
+    --secondary-shade: #efba59;
+
+    --ui-text: #ffffff;
+
+    --message-text: #404040;
+    --message-subtext: #adadad;
+    --message-send: #0984e3;
+    --message-received: #ececec;
+    
+}
+
+/* CHAT BUBBLE */
+
+.hc__client__frame {
+    position: fixed;
+    bottom: max(40px, 2%);
+    right: max(40px, 1%);
+    margin-bottom: 80px;
+    height: calc(100vh - 65px - 80px);
+    height: min(600px, calc(100vh) - 65px - (max(40px, 2%) * 2));
+    max-height: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px 0 #0000001a;
+    visibility: hidden;
+    transform: translateY(max(40px, 2%));
+    opacity: 0;
+    transition: 0.2s ease-out;
+}
+
+.hc__client__frame.active {
+    visibility: visible;
+    transform: translateY(0);
+    opacity: 1;
+    transition: 0.2s ease-in;
+}
+
+.hc__client__frame.maximize {
+    width: calc(100% - 80px);
+    width: calc(100% - max(40px, 1%) * 2);
+    height: calc(100vh - 65px - 80px);
+    height: calc(100vh - 65px - (max(40px, 2%) * 2));
+    max-height: none;
+}
+
+button.hc__floating_bubble {
+    box-sizing: border-box;
+    position: fixed;
+    bottom: max(40px, 2%);
+    right: max(40px, 1%);
+    height: 65px;
+    width: 65px;
+    border:none;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 100000000000000;
+
+    color: var(--ui-text);
+    background-color: var(--main-color);
+}
+
+
+
+
+/* INTRO MESSAGE */
+.hc__chat__invite {
+    box-sizing: border-box;
+    position: fixed;
+    bottom: max(40px, 2%);
+    right: max(40px, 1%);
+    border: none;
+    line-height: 1;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 100000000000000;
+    transition: 0.2s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    margin-bottom: 70px;
+    filter: drop-shadow(0px 1px 2px #929292);
+}
+
+.hc__inner__invite {
+    padding: 16px;
+    margin-right: auto;
+    background-color: #ffffff;
+    color: var(--message-text);
+    border-bottom-left-radius: 0;
+    word-break: break-word;
+    max-width: 250px;
+    border-radius: 4px;
+}
+
+button.hc__close_invite {
+    position: absolute;
+    bottom: 100%;
+    margin-bottom: 3px;
+    margin-right: 1px;
+    right: 0;
+    outline: none;
+    padding: 10px;
+    border-radius: 50%;
+    transform: translate(50%, 50%);
+    line-height: 0;
+    border: 1px solid #cecece;
+    background-color: var(--secondary-color);
+}
+
+.hc__chat__invite.active {
+    margin-bottom: 80px;
+    opacity: 1;
+    visibility: visible;
+}
+
+button.hc__close_invite::before {
+    content: 'x';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
+    width: 8px;
+    height: 3px;
+    color: var(--ui-text);
+}

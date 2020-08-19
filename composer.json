@@ -1,0 +1,21 @@
+{
+	"name" : "goodday/hellochat",
+	"type" : "project",
+	"description" : "This is a chatplugin created for SilverStripe",
+	"keywords" : ["chat", "silverstripe"],
+	"license" : "MIT",
+	"authors" : [
+		{
+			"name" : "Lesley Taihitu",
+			"email" : "lesley@hellogoodday.nl",
+			"homepage" : "https://hellogoodday.nl",
+			"role" : "Developer"
+		}
+	],
+
+	"autoload" : {
+		"psr-4" : {
+			"HelloChat\\" : "src/"
+		}
+	}
+}

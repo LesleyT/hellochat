@@ -1,0 +1,32 @@
+{
+  "$id": "33",
+  "AutoRefresh": true,
+  "AutoRefreshRemotes": true,
+  "CommitTextLinks": null,
+  "DraftCommitMsg": "",
+  "IncomingSavedCount": 1,
+  "LastCheckedRemotes": "2020-08-19T11:13:26.5974008+02:00",
+  "LastUsedView": 1,
+  "LogBranchFilterIndex": 0,
+  "OutgoingSavedCount": 0,
+  "SidebarExpandedItems": [
+    "Branches"
+  ],
+  "SidebarWidth": 210.0,
+  "SubtreeLinks": [],
+  "RemoteProjectLinks": [
+    {
+      "$id": "34",
+      "BaseUrl": "https://bitbucket.org/",
+      "Identifier": "",
+      "RemoteName": "origin",
+      "Type": 0,
+      "Username": "gooddayGroup",
+      "CloneUrl": "https://gooddayGroup@bitbucket.org/gooddayGroup/hellochat.git",
+      "ProjectUrl": "https://bitbucket.org/gooddayGroup/hellochat",
+      "AccountId": "gooddayGroup@bitbucket.org",
+      "AvatarUrl": "https://bytebucket.org/ravatar/%7B0281779f-d51c-418d-b6fa-1293b3ea9099%7D?ts=default",
+      "DisplayName": "origin: https://bitbucket.org/"
+    }
+  ]
+}
