@@ -1,10 +1,12 @@
+import { NotificationManager } from '../../classes/NotificationManager.js';
+
 export class UserScreen {
     
     context;
     parent;
     elements;
 
-    
+    notifier;
 
     userWait;
     userTimer;
@@ -13,6 +15,8 @@ export class UserScreen {
         this.context = context;
         this.parent = parent;
         this.elements = {};
+
+        this.notifier = new NotificationManager(this.context);
 
         this.userWait = 30000;
     }
@@ -105,7 +109,8 @@ export class UserScreen {
         if (this.userTimer) { clearTimeout(this.userTimer); }
     }
 
-    async run(){       
+    async run(){      
+        this.notifier.askConsent(); 
         this.build();
         let user;
         if((user = await this.context.connection.loginPing())){
@@ -184,6 +189,7 @@ export class UserScreen {
             }
             if(latest > 0){
                 sessionStorage.setItem('hc_latest_chat', latest);
+                this.notifier.send("Nieuwe chat", "Er is een nieuwe chat geopend. Klik hier om naar de pagina te gaan.", window.HelloChat.config.notificationIcon);
             }
             this.filterChats();
         }
@@ -279,8 +285,6 @@ export class UserScreen {
         .then(function(response){ return response; })
         .catch(function(error){ console.log(error); });
 
-        console.log(response);
-
         if(response.statusCode === 200){
             sessionStorage.setItem('hc_conversation', conversationId);
             if(!sessionStorage.getItem('hc_conversation')){
@@ -288,6 +292,11 @@ export class UserScreen {
             } else {
                 this.context.startPhase('pending');
             }
+        } else {
+            element.classList.add('error');
+            setTimeout(function(){
+                this.remove();
+            }.bind(element), 1000);
         }
     }
 

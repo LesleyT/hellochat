@@ -8,7 +8,6 @@ class View {
 
     function load($view, $data = []){
         extract((array) $data, EXTR_SKIP);
-        include
     }
 
 }

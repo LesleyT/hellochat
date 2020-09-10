@@ -1,11 +1,11 @@
-php_flag display_errors on
 SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteBase /hellochat/src/
+RewriteBase /silverstripe/hellochat/src/src/
 
 
 RewriteRule ^api\/[vV](\d*\.?\d*)\/cronjob\/clean$ V$1/API/index.php?module=conversations&action=clean [L]

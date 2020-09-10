@@ -17,7 +17,7 @@
 
 /* CHAT BUBBLE */
 
-.hc__client__frame {
+iframe.hc__client__frame {
     position: fixed;
     bottom: max(40px, 2%);
     right: max(40px, 1%);
@@ -31,16 +31,19 @@
     transform: translateY(max(40px, 2%));
     opacity: 0;
     transition: 0.2s ease-out;
+    border:none;
+    z-index: 10000000000000;
+    max-width: calc(100% - max(80px, 2%));
 }
 
-.hc__client__frame.active {
+iframe.hc__client__frame.active {
     visibility: visible;
     transform: translateY(0);
     opacity: 1;
     transition: 0.2s ease-in;
 }
 
-.hc__client__frame.maximize {
+iframe.hc__client__frame.maximize {
     width: calc(100% - 80px);
     width: calc(100% - max(40px, 1%) * 2);
     height: calc(100vh - 65px - 80px);
@@ -64,16 +67,25 @@ button.hc__floating_bubble {
     font-weight: bold;
     font-size: 18px;
     z-index: 100000000000000;
+    background-size: 30px auto;
+    background-repeat: no-repeat;
+    background-position: center;
 
     color: var(--ui-text);
     background-color: var(--main-color);
 }
 
+button.hc__floating_bubble:focus {
+    outline: none;
+}
 
+div.hc__chat__invite p {
+    line-height: 1.4;
+}
 
 
 /* INTRO MESSAGE */
-.hc__chat__invite {
+div.hc__chat__invite {
     box-sizing: border-box;
     position: fixed;
     bottom: max(40px, 2%);
@@ -90,7 +102,7 @@ button.hc__floating_bubble {
     filter: drop-shadow(0px 1px 2px #929292);
 }
 
-.hc__inner__invite {
+div.hc__inner__invite {
     padding: 16px;
     margin-right: auto;
     background-color: #ffffff;
@@ -116,7 +128,7 @@ button.hc__close_invite {
     background-color: var(--secondary-color);
 }
 
-.hc__chat__invite.active {
+div.hc__chat__invite.active {
     margin-bottom: 80px;
     opacity: 1;
     visibility: visible;
@@ -133,3 +145,55 @@ button.hc__close_invite::before {
     height: 3px;
     color: var(--ui-text);
 }
+
+
+button.hc__maximize__chat {
+    position: fixed;
+    right: max(40px, 1%);
+    height: 30px;
+    width: 30px;
+    margin-bottom: -40px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s ease-out;
+    background-color: var(--main-color);
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    outline: none !important;
+    bottom: max(40px, 2%);
+    z-index: 100000000000000;
+    margin-bottom: 48px;
+    margin-right: 40px;
+    display: block;
+    border: 2px solid #ffffff;
+    padding: 11px;
+    border-radius: 50%;
+}
+
+.hc__client__frame.active ~ button.hc__maximize__chat {
+    visibility: visible;
+    opacity: 1;
+    transition: 0.2s ease-in;
+    
+}
+
+
+
+@media screen and (max-width : 768px) {
+    iframe.hc__client__frame {
+        height: calc(100vh - 65px - 80px -50px);
+        height: min(600px, calc(100vh) - 65px - 50px - (max(40px, 2%) * 2));
+    }
+
+    iframe.hc__client__frame.maximize {
+        height: calc(100vh - 50px - 65px - (max(40px, 2%) * 2));
+    }
+}
+
+@media screen and (max-height: 800px) {
+    iframe.hc__client__frame.maximize {
+        height: calc(100vh - 65px - (max(40px, 2%) * 2) - 50px);
+    }
+}
+

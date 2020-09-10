@@ -5,7 +5,7 @@ class Authenticator {
     private static $_instance = null;
     private $authenticator;
 
-    private $_supported = ['Base_Authenticator' => true, 'Local_Authenticator' => true];
+    private $_supported = ['Base_Authenticator' => true, 'Local_Authenticator' => true, 'Silverstripe_Authenticator' => true];
 
     public static function instance(){
         if(self::$_instance === null){

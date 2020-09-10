@@ -7,6 +7,7 @@ export class SettingsScreen {
     values;
     textareas;
     passwords;
+    checkboxes;
 
     constructor(context, parent){
         this.context = context;
@@ -19,6 +20,7 @@ export class SettingsScreen {
         };
         this.textareas = ['initialMessage', 'introDescription', 'formPrivacy', 'inactiveDescription', 'endDescription'];
         this.passwords = ['systemPassword'];
+        this.checkboxes = ['systemDisabled'];
     }
 
     build(){
@@ -91,8 +93,11 @@ export class SettingsScreen {
                     if(t[attr[j]] === undefined || t[attr[j]] == 'undefined'){
                         t[attr[j]] = {}
                     }
+
                     if(j === attr.length - 1) {
-                        t[attr[j]] = this.nl2br(inputs[i].value);
+                        if(inputs[i].disabled != true){
+                            t[attr[j]] = this.nl2br(inputs[i].value);
+                        }
                     }
                     else {
                         t = t[attr[j]]
@@ -223,6 +228,14 @@ export class SettingsScreen {
                                 'name' : 'settings['+index+']'+'['+name+']',
                                 'value' : 'This is a placeholder value..'
                             }));
+                        } else if(this.checkboxes.indexOf(name) >= 0){
+                            sub.appendChild(this.buildField({
+                                'element' : 'input',
+                                'type' : 'checkbox',
+                                'name' : 'settings['+index+']'+'['+name+']',
+                                'value' : 'on',
+                                'checked' : (typeof this.values[index] != 'undefined' && typeof this.values[index][name] != 'undefined') ? (this.values[index][name] == 'on' ? true : false) : false
+                            }));
                         } else {
                             sub.appendChild(this.buildField({
                                 'element' : 'input',
@@ -296,8 +309,36 @@ export class SettingsScreen {
         for(let index in config){
             element[index] = config[index];
         }
+        if(element.type == 'checkbox'){
+            let checkboxContainer = document.createElement('div');
+            checkboxContainer.classList.add('hc__activate__container');
+
+            let disabled = document.createElement('input');
+            disabled.type = "hidden";
+            disabled.value = 'off';
+            disabled.name = element.name;
+            disabled.disabled = element.checked ? true : false;
+
+            element.classList.add('hc__activate__chat');
+            element.addEventListener('change', function(element, disabled, event){ 
+                if(element.checked){
+                    element.classList.add('active');
+                    disabled.disabled = true;
+                } else {
+                    element.classList.remove('active');
+                    disabled.disabled = false;
+                }
+            }.bind(this, element, disabled), true);
+
+            let label = document.createElement('label');
+            label.classList.add('hc__activate__label');
+            
+            checkboxContainer.appendChild(element);
+            checkboxContainer.appendChild(label);
+            checkboxContainer.appendChild(disabled);
+            return checkboxContainer;
+        }
         if(element.type == 'password'){
-            console.log(element.type);
             let passwordContainer = document.createElement('div');
             passwordContainer.classList.add('hc__password__container');
             passwordContainer.classList.add('inactive');
@@ -377,7 +418,8 @@ export class SettingsScreen {
                 'inactiveButton' : 'Neem contact op',
                 'inactiveUrl' : '',
                 'activateLabel' : 'Chat actief',
-                'systemPassword' : 'This is a placeholder value..'
+                'systemPassword' : 'This is a placeholder value..',
+                'systemDisabled' : false,
             }
         }
     }

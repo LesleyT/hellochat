@@ -166,7 +166,7 @@ class User extends Request {
 
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            $query = $this->getWriteDB()->prepare('insert into gdhc_users (fullname, username, password, role) VALUES (:fullname, :username, :password, :role)');
+            $query = $this->getWriteDB()->prepare('insert into gdhc_users (fullname, username, password, loginattempts, role) VALUES (:fullname, :username, :password, 0, :role)');
             $query->bindParam(':fullname', $fullname, \PDO::PARAM_STR);
             $query->bindParam(':username', $username, \PDO::PARAM_STR);
             $query->bindParam(':password', $hashed_password, \PDO::PARAM_STR);

@@ -22,7 +22,7 @@ class Settings extends Request {
             'main' => [ "mainColor" => true, "primaryShade" => true ],
             'secondary' => [ "secondaryColor" => true, "secondaryShade" => true ],
             'ui' => [ "uiText" => true ],
-            'system' => [ 'active' => true, 'inactiveUrl' => true, 'inactiveDescription' => true, 'inactiveButton' => true, 'activateLabel' => true, 'systemPassword' => true ],
+            'system' => [ 'active' => true, 'inactiveUrl' => true, 'inactiveDescription' => true, 'inactiveButton' => true, 'activateLabel' => true, 'systemPassword' => true, 'systemDisabled' => true ],
             'end' => ['endTitle' => true, 'endDescription' => true ],
         ];
     }

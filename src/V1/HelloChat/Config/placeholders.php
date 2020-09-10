@@ -66,6 +66,7 @@
             'settingsMenu' : 'Instellingen menuknop',
             'system' : 'Systeem Instellingen',
             'systemPassword' : 'Cronjob Wachtwoord',
+            'systemDisabled' : 'Chat uitschakelen',
             'inactiveDescription' : 'Chat inactief omschrijving',
             'inactiveButton' : 'Neem contact op',
             'inactiveUrl' : 'Chat inactief URL',

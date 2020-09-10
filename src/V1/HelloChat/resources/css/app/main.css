@@ -16,6 +16,7 @@ body {
     font-size: 15px;
     height: 100%;
     width: 100%;
+    margin:0;
 }
 
 
@@ -48,9 +49,16 @@ button.hc__floating_bubble {
     font-weight: bold;
     font-size: 18px;
     z-index: 100000000000000;
+    background-size: 30px auto;
+    background-repeat: no-repeat;
+    background-position: center;
 
     color: var(--ui-text);
     background-color: var(--main-color);
+}
+
+button.hc__floating_bubble:focus {
+    outline: none;
 }
 
 /* MESSENGER CHAT */
@@ -60,6 +68,7 @@ main.hc__container {
     width: 100%;
     display: flex;
     flex-direction: column;
+    background-color: #ffffff;
     /* flex-wrap: wrap; */
 }
 
@@ -67,7 +76,7 @@ main.hc__container > * {
     width: 100%;
 }
 
-.main__screen {
+div.main__screen {
     flex: auto 1 1;
     overflow-x: hidden;
     overflow-y: auto;
@@ -82,7 +91,7 @@ main.hc__container > * {
 }
 
 
-.hc__header {
+div.hc__header {
     padding-top: 20px;
     padding-bottom: 20px;
     background: linear-gradient(90deg, var(--main-color), var(--main-shade));    
@@ -133,7 +142,7 @@ figure.hc__header__contact figcaption {
     min-width: 0;
 }
 
-.hc__messages {
+div.hc__messages {
     padding-top: 6%;
     padding-bottom: 6%;
     flex: auto;
@@ -144,23 +153,23 @@ figure.hc__header__contact figcaption {
     margin-bottom: 60px;
 }
 
-.hc__head + .hc__message__object-send, .hc__head + .hc__message__object-received {
+div.hc__head + article.hc__message__object-send, div.hc__head + article.hc__message__object-received {
     margin-top: 6%;
 }
 
-.hc__messages > article + article {
+div.hc__messages > article + article {
     margin-top:6%;
 }
 
-.hc__messages > article {
+div.hc__messages > article {
     max-width: 80%;
 }
 
-.hc__messages > article p {
+div.hc__messages > article p {
     border-radius: 5px;
 }
  
-.hc__messages > article  time {
+div.hc__messages > article  time {
     font-size: 80%;
     margin: 6px 0;
     display: block;
@@ -253,7 +262,7 @@ form.hc__form--message {
     background-color:#ffffff;
 }
 
-.hc__form__input {
+div.hc__form__input {
     box-sizing: content-box;
     width: auto;
     z-index: 1;
@@ -263,7 +272,7 @@ form.hc__form--message {
     padding-right: 50px;
 }
 
-.hc__form__input textarea {
+div.hc__form__input textarea {
     height: 100%;
     width: 100%;
     border: none;
@@ -389,12 +398,12 @@ form.hc__form--message.is__typing::after {
 
 /* WELCOM SCREEN */
 
-.hc__header.disable {
+div.hc__header.disable {
     height: 45px;
     overflow: hidden;
 }
 
-.hc__header.disable figure.hc__header__contact {
+div.hc__header.disable figure.hc__header__contact {
     visibility: hidden;
 }
 
@@ -443,7 +452,7 @@ p.closed__description {
     font-weight: bold;
 }
 
-.hc__closed__information + .hc__footer {
+article.hc__closed__information + div.hc__footer {
     margin-top: 30px;
 }
 
@@ -539,7 +548,6 @@ label.hc__checkbox .hc__checkbox__display {
     width: 1rem;
     cursor: pointer;
     z-index: 2;
-    transition: 0.2s ease-out;
 }
 
 label.hc__checkbox .hc__checkbox__display:hover {
@@ -581,16 +589,26 @@ label.hc__checkbox input[type="checkbox"]:checked + .hc__checkbox__display::afte
     transform: translate(-50%, -50%) rotate(25deg) scale(1);
 }
 
+input.error, label.error {
+    border: 2px solid #dc3d3d !important;
+    border-radius: 5px;
+    padding: 3px 5px;
+}
+
+label.error.hc__checkbox .hc__checkbox__display {
+    left: 5px;
+    top: 6px;
+}
 
 
 /* FOOTER */
 
-.hc__footer, .hc__head {
+div.hc__footer, div.hc__head {
     text-align: center;
     font-size: 0.8rem;
 }
 
-.hc__footer a, .hc__head a {
+div.hc__footer a, div.hc__head a {
     color: var(--main-color);
 }
 
@@ -616,7 +634,6 @@ label.hc__checkbox input[type="checkbox"]:checked + .hc__checkbox__display::afte
 /* ADMIN OVERVIEW */
 
 div.hc__users {
-    padding: 0;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -669,12 +686,12 @@ button.hc__settings img {
     max-width: 100%;
 }
 
-main.hc__container > .hc__users {
+main.hc__container > button.hc__users {
     padding-left: 0;
     padding-right: 0;
 }
 
-.hc__users > * {
+button.hc__users > * {
     padding-left: 5%;
     padding-right: 5%;
 }
@@ -733,7 +750,7 @@ button.hc__user__claim {
 }
 
 
-.hc__switch__container {
+div.hc__switch__container {
     position: sticky;
     top: 0;
     left: 0;
@@ -743,7 +760,7 @@ button.hc__user__claim {
     margin-bottom: 40px;
 }
 
-.hc__display_switch + label.hc__display__label {
+input.hc__display_switch + label.hc__display__label {
     display: flex;
     margin: 0 0%;
     height: 30px;
@@ -756,7 +773,7 @@ button.hc__user__claim {
     border: 1px solid #536069;
 }
 
-.hc__display_switch:checked + label.hc__display__label {
+input.hc__display_switch:checked + label.hc__display__label {
     background-position: -150%;
 }
 
@@ -797,7 +814,7 @@ label.hc__display__label::before, label.hc__display__label::after {
 }
 
 
-.hc__inactive_message {
+div.hc__inactive_message {
     position: sticky;
     bottom: 0;
     left: 0;
@@ -814,22 +831,30 @@ label.hc__display__label::before, label.hc__display__label::after {
     max-height: 0px;
 }
 
-.hc__inactive_message::before {
+div.hc__inactive_message::before {
     content: 'ALERT: ';
     font-weight: bold;
 }
 
-.hc__inactive_message.active {
+div.hc__inactive_message.active {
     max-height: 45px;
     padding: 15px 12% !important;
 }
 
 
 
-.main__screen {
+div.main__screen {
     background-color: #ffffff;
 }
 
+
+li.hc__user__item.error button.hc__user__claim {
+    background: #ff0d0d;
+}
+
+li.hc__user__item.error {
+    transform: scale(0.9) translateZ(0) perspective(1px);
+}
 
 
 
@@ -951,7 +976,7 @@ h2.hc__detail__title {
     display: block;
 }
 
-.hc__detail .hc__messages {
+div.hc__detail div.hc__messages {
     padding: 6%;
     margin: 0;
     background-color: #f5f5f5;
@@ -981,7 +1006,7 @@ button.hc__remove__data, button.hc__close__chat {
     margin-bottom: 10px;
 }
 
-.hc__settings__menu {
+div.hc__settings__menu {
     position: absolute;
     top: 65px;
     right: 5%;
@@ -997,7 +1022,7 @@ button.hc__remove__data, button.hc__close__chat {
     flex-direction: column;
 }
 
-button.hc__edit__settings, .hc__refresh__data, .hc__to__overview {
+button.hc__edit__settings, .hc__refresh__data, button.hc__to__overview {
     background-color: transparent;
     color: #000000;
     border: none;
@@ -1008,11 +1033,11 @@ button.hc__edit__settings, .hc__refresh__data, .hc__to__overview {
     width: 100%;
 }
 
-.hc__to__overview{
+button.hc__to__overview{
     border-bottom: none;
 }
 
-button.hc__edit__settings:hover, .hc__refresh__data:hover, .hc__to__overview:hover {
+button.hc__edit__settings:hover, .hc__refresh__data:hover, button.hc__to__overview:hover {
     background-color: #e8e8e8;
     border-radius: 5px;
 }
@@ -1022,17 +1047,17 @@ button.hc__edit__settings.active {
     color: var(--ui-text);
 }
 
-.hc__settings__menu > button {
+div.hc__settings__menu > button {
     border-bottom: 1px solid #cecece;
 }
 
-button.hc__settings.active ~ .hc__settings__menu {
+button.hc__settings.active ~ div.hc__settings__menu {
     visibility: visible;
     top: 60px;
     opacity: 1;
 }
 
-.hc__confirmation {
+div.hc__confirmation {
     position: fixed;
     top: 0;
     left: 0;
@@ -1042,7 +1067,7 @@ button.hc__settings.active ~ .hc__settings__menu {
     z-index:2;
 }
 
-.hc__confirmation__inner {
+div.hc__confirmation__inner {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1058,7 +1083,7 @@ p.hc__confirmation_content {
     margin-bottom: 15px;
 }
 
-.hc__confirmation__inner > button {
+div.hc__confirmation__inner > button {
     width: 45%;
     padding: 5px;
     border: 1px solid #afafaf;
@@ -1068,7 +1093,7 @@ p.hc__confirmation_content {
     font-weight:bold;
 }
 
-.hc__confirmation__inner > button + button {
+div.hc__confirmation__inner > button + button {
     margin-left: 5%;
 }
 
@@ -1082,7 +1107,7 @@ button.hc__confirmation__false:hover {
     background: #d6d6d6;
 }
 
-.hc__messages > article[data-owner]::before {
+div.hc__messages > article[data-owner]::before {
     content: attr(data-owner);
     position:absolute;
     bottom:100%;
@@ -1102,14 +1127,14 @@ button.hc__confirmation__false:hover {
     transition: 0.1s ease-in-out 0s;
 }
 
-.hc__messages > article[data-owner]:hover::before {
+div.hc__messages > article[data-owner]:hover::before {
     margin-bottom: 6px;
     visibility:visible;
     opacity: 1;
     transition: 0.1s ease-in-out 0.5s;
 }
 
-.hc__messages > .hc__message__object-send[data-owner]::before {
+div.hc__messages > article.hc__message__object-send[data-owner]::before {
     right:0;
     left: inherit;
 }
@@ -1136,17 +1161,17 @@ h2.hc__settings__title {
 }
 
 
-.hc__settings__section {
+div.hc__settings__section {
     border: 1px solid #cecece;
     padding: 0;
     border-radius: 5px;
 }
 
-.hc__settings__section + .hc__settings__section {
+div.hc__settings__section + div.hc__settings__section {
     margin-top: 30px;
 }
 
-.hc__settings__section h2 {
+div.hc__settings__section h2 {
     color: #000000;
     font-weight: bold;
     font-size: 1.3rem;
@@ -1154,19 +1179,19 @@ h2.hc__settings__title {
     display: block;
 }
 
-.hc__settings__subsection {
+div.hc__settings__subsection {
     padding: 10px 5%;
 }
 
-.hc__settings__subsection:nth-child(odd) {
+div.hc__settings__subsection:nth-child(odd) {
     background-color:#ffffff;
 }
 
-.hc__settings__subsection:nth-child(even) {
+div.hc__settings__subsection:nth-child(even) {
     background-color:#f3f3f3;
 }
 
-.hc__settings__subsection h3 {
+div.hc__settings__subsection h3 {
     color: #000000;
     font-weight: bold;
     font-size: 1rem;
@@ -1174,14 +1199,14 @@ h2.hc__settings__title {
     display: block;
 }
 
-.hc__settings__subsection h4 {
+div.hc__settings__subsection h4 {
     color: #000000;
     font-size: 0.8rem;
     margin: 5px 0 10px;
     display: block;
 }
 
-.hc__settings__subsection input {
+div.hc__settings__subsection input {
     width: 100%;
     height: 30px;
     max-height: none;
@@ -1191,7 +1216,7 @@ h2.hc__settings__title {
     outline: none;
 }
 
-.hc__settings__subsection  textarea {
+div.hc__settings__subsection  textarea {
     width: 100%;
     max-height: none;
     display: block;
@@ -1204,11 +1229,11 @@ h2.hc__settings__title {
     padding: 9px 12px;
 }
 
-.hc__settings__subsection input[type="text"] {
+div.hc__settings__subsection input[type="text"] {
     padding: 10px 15px;
 }
 
-.hc__settings__subsection input + h4 {
+div.hc__settings__subsection input + h4 {
     margin-top: 15px;
 }
 
@@ -1236,7 +1261,7 @@ button.hc__save__settings {
 
 
 
-.hc__activate__container {
+div.hc__activate__container {
     background-color: transparent;
     color: #000000;
     border: none;
@@ -1400,7 +1425,7 @@ h2.end__title + p.end__description {
 
 
 
-.hc__password__container.inactive::before {
+div.hc__password__container.inactive::before {
     content: 'edit';
     position: absolute;
     top: 0;
@@ -1435,12 +1460,23 @@ button.hc__remove__data, button.hc__close__chat {
     order: 4;
 }
 
+div.hc__settings__subsection div.hc__activate__container {
+    padding: 0;
+    border: none;
+    margin-top: -20px;
+}
+
+div.hc__settings__subsection input.hc__activate__chat {
+    margin: 0;
+    top: 20px;
+}
+
 
 
 
 
 @media all and (min-width: 991px){
-    main.hc__container > *, .hc__settings__subsection, .hc__users > *, .hc__settings__subsection {
+    main.hc__container > *, divdiv.hc__settings__subsection, .hc__users > *, div.hc__settings__subsection {
         padding-left: 30px;
         padding-right: 30px;
     }
@@ -1454,7 +1490,7 @@ button.hc__remove__data, button.hc__close__chat {
         margin-right: 30px;
     }
 
-    .hc__detail .hc__messages {
+    div.hc__detail div.hc__messages {
         padding: 30px;
     }
 
@@ -1463,7 +1499,7 @@ button.hc__remove__data, button.hc__close__chat {
         padding-bottom: 30px;
     }
 
-    .hc__head + .hc__message__object-send, .hc__head + .hc__message__object-received, .hc__messages > article + article {
+    div.hc__head + article.hc__message__object-send, div.hc__head + article.hc__message__object-received, div.hc__messages > article + article {
         margin-top: 30px;
     }
 

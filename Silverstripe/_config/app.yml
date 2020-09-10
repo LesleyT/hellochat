@@ -1,0 +1,26 @@
+#SilverStripe\Admin\LeftAndMain:
+#  controller: Goodday\HelloChat\HelloChatController
+
+
+
+#SilverStripe\Admin\AdminRootController:
+  #extends: 
+    #- 'Goodday\HelloChat\HelloChatController'
+
+
+
+SilverStripe\Control\Controller:
+  extensions:
+    - Goodday\HelloChat\AdminResources
+
+
+# SilverStripe\Admin\LeftAndMain:
+  # extra_requirements_javascript:
+    # - /blicon/silverstripe/Blicon/hellochat/src/src/V1/HelloChat/resources/js/client/main.js
+
+
+  #registered_controllers:
+    #/:
+      
+      #links:
+        #/: 'Run registered SilverStripe cron tasks'

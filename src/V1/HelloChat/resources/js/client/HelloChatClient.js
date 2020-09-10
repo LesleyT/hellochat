@@ -18,16 +18,18 @@ export class HelloChatClient {
         this.elements.screen = document.createElement('iframe');
         this.elements.screen.classList.add('hc__client__frame');
         this.elements.screen.src = window.HelloChatClient.url + (this.isAdmin ? '?mode=0' : '?mode=1');
-        this.elements.screen.classList.toggle('active');
+        // this.elements.screen.classList.toggle('active');
         if(sessionStorage.getItem('hc__chat__activated') == 'true'){
             this.elements.screen.classList.toggle('active');
         }
 
         this.elements.button = document.createElement('button');
         this.elements.button.classList.add('hc__floating_bubble');
-        if(this.isAdmin){
+        this.elements.button.style.backgroundImage = "url("+window.HelloChat.config.notificationIcon+")";
+        if(!this.isAdmin){
             this.elements.button.addEventListener('click', function(){
                 this.elements.screen.classList.toggle('active');
+                this.closeMessage.call(this.elements.close);
                 sessionStorage.setItem('hc__chat__activated', this.elements.screen.classList.contains('active'));
             }.bind(this), true);
         } else {
@@ -36,15 +38,37 @@ export class HelloChatClient {
                     this.closeMessage.call(this.elements.close);
                 }
                 this.elements.screen.classList.toggle('active');
+                sessionStorage.setItem('hc__chat__activated', this.elements.screen.classList.contains('active'));
             }.bind(this), true);
+        }
+
+        if(this.isAdmin){
+            this.elements.maximize = document.createElement('button');
+            this.elements.maximize.type = "button";
+            this.elements.maximize.classList.add('hc__maximize__chat');
+            this.elements.maximize.style.backgroundImage = 'url('+window.HelloChat.config.expandIcon+')';
+            
+            this.elements.maximize.addEventListener('click', function(screen){
+                this.classList.toggle('active');
+                if(this.classList.contains('active')){
+                    this.style.backgroundImage = 'url('+window.HelloChat.config.shrinkIcon+')';
+                    screen.classList.add('maximize');
+                } else {
+                    this.style.backgroundImage = 'url('+window.HelloChat.config.expandIcon+')';
+                    screen.classList.remove('maximize');
+                }
+            }.bind(this.elements.maximize, this.elements.screen), true);
         }
 
         document.body.appendChild(this.elements.screen);
         document.body.appendChild(this.elements.button);
+        if(this.isAdmin){
+            document.body.appendChild(this.elements.maximize);
+        }
     }
     
     displayMessage(){
-        if(!sessionStorage.getItem('hc__message__shown')){
+        if(!sessionStorage.getItem('hc__message__shown') && !this.isAdmin){
             this.createMessage();
         }
     }
@@ -75,8 +99,10 @@ export class HelloChatClient {
 
     closeMessage(){
         sessionStorage.setItem('hc__message__shown', true);
-        this.parentNode.classList.remove('active');
-        setTimeout(function(){ this.remove(); }.bind(this.parentNode), 200);
+        if(this){
+            this.parentNode.classList.remove('active');
+            setTimeout(function(){ this.remove(); }.bind(this.parentNode), 200);
+        }
     }
 
 }

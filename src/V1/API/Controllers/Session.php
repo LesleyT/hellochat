@@ -55,7 +55,6 @@ class Session extends Request {
         if(isset($jsonData->username)){
             $jsonData->username = Authenticator::instance()->prepareToUseUsername($jsonData->username);
         }
-
         $this->validateCredentialsInput($jsonData);
         $data = $this->validateUserCredentials($jsonData);
 

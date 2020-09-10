@@ -14,8 +14,8 @@ export class UserManager {
             let session = await this.context.connection.attemptLogin(data.username);
             if(!session){
                 this.clearData();
-                this.context.connection.getAuthorization(function(data, response){
-                    let response = await this.createUser({
+                this.context.connection.getAuthorization(async function(data, response){
+                    response = await this.createUser({
                         fullname : data.name,
                         username : data.username,
                         role : "admin"
@@ -44,7 +44,7 @@ export class UserManager {
 
 
 
-    createUser(){
+    async createUser(){
         let endpoint = 'users';
         let response = await fetch(window.HelloChat.config.api + endpoint, {
             method : 'POST',
@@ -67,7 +67,7 @@ export class UserManager {
         return false;
     }
 
-    createConversation(response){
+    async createConversation(response){
         let created = new Date();
         let data = {
             participantOne : response.data.session_id,
@@ -85,7 +85,7 @@ export class UserManager {
         if(typeof options.token != 'undefined'){
             headers.Authorization = options.token;
         }
-        let response = await fetch(window.HelloChat.config.api + endpoint, {
+        response = await fetch(window.HelloChat.config.api + endpoint, {
             method : 'POST',
             headers: headers,
             body: JSON.stringify(data)

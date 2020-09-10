@@ -19,7 +19,7 @@ abstract class Request {
         $this->setEntity(null);
         $this->setCollection(null);
         $this->setAction(null);
-
+  
         try {
             require_once dirname(dirname(__FILE__)).'/Libs/htmlpurifier/library/HTMLPurifier.auto.php';
             $this->_purifierConfig = \HTMLPurifier_Config::createDefault();
@@ -85,6 +85,13 @@ abstract class Request {
     /* ADD ROLE AUTHENTICATION */
 
     protected function validateAuthenticationData(){
+        if(isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) && !isset($_SERVER['HTTP_AUTHORIZATION']) ){
+            if(strlen($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) > 0){
+                $_SERVER['HTTP_AUTHORIZATION'] = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+                unset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
+            }
+        }
+
         if(!isset($_SERVER['HTTP_AUTHORIZATION']) || strlen($_SERVER['HTTP_AUTHORIZATION']) <= 0){
             $response = new \API\Models\Response();
             $response->setHttpStatusCode(401);

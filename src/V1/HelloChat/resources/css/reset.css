@@ -3,19 +3,7 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+.hc__container div, .hc__container span, .hc__container applet, .hc__container object, .hc__container iframe, .hc__container h1, .hc__container h2, .hc__container h3, .hc__container h4, .hc__container h5, .hc__container h6, .hc__container p, .hc__container blockquote, .hc__container pre, .hc__container a, .hc__container abbr, .hc__container acronym, .hc__container address, .hc__container big, .hc__container cite, .hc__container code, .hc__container del, .hc__container dfn, .hc__container em, .hc__container img, .hc__container ins, .hc__container kbd, .hc__container q, .hc__container s, .hc__container samp, .hc__container small, .hc__container strike, .hc__container strong, .hc__container sub, .hc__container sup, .hc__container tt, .hc__container var, .hc__container b, .hc__container u, .hc__container i, .hc__container center, .hc__container dl, .hc__container dt, .hc__container dd, .hc__container ol, .hc__container ul, .hc__container li, .hc__container fieldset, .hc__container form, .hc__container label, .hc__container legend, .hc__container table, .hc__container caption, .hc__container tbody, .hc__container tfoot, .hc__container thead, .hc__container tr, .hc__container th, .hc__container td, .hc__container article, .hc__container aside, .hc__container canvas, .hc__container details, .hc__container embed, .hc__container figure, .hc__container figcaption, .hc__container footer, .hc__container header, .hc__container hgroup, .hc__container menu, .hc__container nav, .hc__container output, .hc__container ruby, .hc__container section, .hc__container summary, .hc__container time, .hc__container mark, .hc__container audio, .hc__container video, .hc__chat__invite div, .hc__chat__invite span, .hc__chat__invite applet, .hc__chat__invite object, .hc__chat__invite iframe, .hc__chat__invite h1, .hc__chat__invite h2, .hc__chat__invite h3, .hc__chat__invite h4, .hc__chat__invite h5, .hc__chat__invite h6, .hc__chat__invite p, .hc__chat__invite blockquote, .hc__chat__invite pre, .hc__chat__invite a, .hc__chat__invite abbr, .hc__chat__invite acronym, .hc__chat__invite address, .hc__chat__invite big, .hc__chat__invite cite, .hc__chat__invite code, .hc__chat__invite del, .hc__chat__invite dfn, .hc__chat__invite em, .hc__chat__invite img, .hc__chat__invite ins, .hc__chat__invite kbd, .hc__chat__invite q, .hc__chat__invite s, .hc__chat__invite samp, .hc__chat__invite small, .hc__chat__invite strike, .hc__chat__invite strong, .hc__chat__invite sub, .hc__chat__invite sup, .hc__chat__invite tt, .hc__chat__invite var, .hc__chat__invite b, .hc__chat__invite u, .hc__chat__invite i, .hc__chat__invite center, .hc__chat__invite dl, .hc__chat__invite dt, .hc__chat__invite dd, .hc__chat__invite ol, .hc__chat__invite ul, .hc__chat__invite li, .hc__chat__invite fieldset, .hc__chat__invite form, .hc__chat__invite label, .hc__chat__invite legend, .hc__chat__invite table, .hc__chat__invite caption, .hc__chat__invite tbody, .hc__chat__invite tfoot, .hc__chat__invite thead, .hc__chat__invite tr, .hc__chat__invite th, .hc__chat__invite td, .hc__chat__invite article, .hc__chat__invite aside, .hc__chat__invite canvas, .hc__chat__invite details, .hc__chat__invite embed, .hc__chat__invite figure, .hc__chat__invite figcaption, .hc__chat__invite footer, .hc__chat__invite header, .hc__chat__invite hgroup, .hc__chat__invite menu, .hc__chat__invite nav, .hc__chat__invite output, .hc__chat__invite ruby, .hc__chat__invite section, .hc__chat__invite summary, .hc__chat__invite time, .hc__chat__invite mark, .hc__chat__invite audio, .hc__chat__invite video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -24,25 +12,20 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+.hc__container article, .hc__container aside, .hc__container details, .hc__container figcaption, .hc__container figure, .hc__container footer, .hc__container header, .hc__container hgroup, .hc__container menu, .hc__container nav, .hc__container section, .hc__chat__invite article, .hc__chat__invite aside, .hc__chat__invite details, .hc__chat__invite figcaption, .hc__chat__invite figure, .hc__chat__invite footer, .hc__chat__invite header, .hc__chat__invite hgroup, .hc__chat__invite menu, .hc__chat__invite nav, .hc__chat__invite section {
 	display: block;
 }
-body {
-	line-height: 1;
-}
-ol, ul {
+.hc__container ol, .hc__container ul, .hc__chat__invite ol, .hc__chat__invite ul {
 	list-style: none;
 }
-blockquote, q {
+.hc__container blockquote, .hc__container q, .hc__chat__invite blockquote, .hc__chat__invite q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+.hc__container blockquote:before, .hc__container blockquote:after, .hc__container q:before, .hc__container q:after, .hc__chat__invite blockquote:before, .hc__chat__invite blockquote:after, .hc__chat__invite q:before, .hc__chat__invite q:after {
 	content: '';
 	content: none;
 }
-table {
+.hc__container table, .hc__chat__invite table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }

@@ -30,6 +30,12 @@
 
     define('HELLO_CHAT_VERSION_API', HELLO_CHAT_URL . 'api/' . $version . '/');
 
+    if(!defined('API_ROOT')){
+        define('API_ROOT', HELLO_CHAT_VERSION_ROOT.'/API');
+    }
+
+    include HELLO_CHAT_VERSION_ROOT.'/autoload.php';
+
     if($mode == 0){
         include HELLO_CHAT_DIR.'/Views/admin.php';
     } else {

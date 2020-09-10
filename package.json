@@ -1,0 +1,40 @@
+{
+  "name": "gd-project-skeleton",
+  "version": "0.0.1",
+  "description": "A simple, skeleton for starting a project",
+  "scripts": {
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://LesleyTYap@bitbucket.org/hellogoodday/skeleton.git"
+  },
+  "private": true,
+  "keywords": [
+    "Goodday",
+    "Skeleton"
+  ],
+  "author": "Lesley Taihitu",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "browserslist": [
+  "since 2017-06"
+],
+  "homepage": "",
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-syntax-class-properties": "^7.10.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+    "@babel/preset-env": "^7.11.5",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-plumber": "^1.2.1"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0"
+  }
+}

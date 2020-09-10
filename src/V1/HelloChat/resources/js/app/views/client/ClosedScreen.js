@@ -21,7 +21,6 @@ export class ClosedScreen {
             closedDescription.classList.add('closed__description');
             closedDescription.innerHTML = window.HelloChat.localization.system.inactiveDescription;
 
-            
         closed.appendChild(closedDescription);
         container.appendChild(closed);
             

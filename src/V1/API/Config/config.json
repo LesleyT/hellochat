@@ -6,10 +6,11 @@
         "conversations" : "\\API\\Controllers\\Conversation",
         "settings" : "\\API\\Controllers\\Settings"
     },
-    "authenticator" : "Local_Authenticator",
-    "authorization_domain" : "localhost/hellochat/src/validator.php",
+    "db_connector" : "SilverStripe",
+    "authenticator" : "Silverstripe_Authenticator",
+    "authenticator_url" : "https://dev.hellogoodday.nl/silverstripe/",
     "salt" : "1iVs4bvH+!pz1zYB51A|av;=]M~TK:}i!]*6l!1CFBIr1}:_m>Lvs0BGPn-el]6q",
-    "domain" : "localhost",
-    "path" : "/",
-    "secure" : false
+    "domain" : "dev.hellogoodday.nl",
+    "path" : "/silverstripe",
+    "secure" : true
 }

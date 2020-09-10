@@ -1,4 +1,6 @@
 <?php 
     spl_autoload_register(function ($class){
-        require dirname(__FILE__) . '/' . str_replace("\\", '/', $class) . '.php';
+    	if(file_exists(HELLO_CHAT_VERSION_ROOT.'/'.str_replace("\\", '/', $class).'.php')){
+        	require dirname(__FILE__) . '/' . str_replace("\\", '/', $class) . '.php';
+    	}
     });

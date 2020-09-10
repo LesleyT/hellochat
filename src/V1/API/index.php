@@ -3,6 +3,12 @@
 namespace API;
 
 define('API_ROOT', dirname(__FILE__));
+if(!defined('HELLO_CHAT_VERSION_ROOT')){
+    define('HELLO_CHAT_VERSION_ROOT', dirname(API_ROOT));
+}
+if(!defined('HELLO_CHAT_ROOT')){
+    define('HELLO_CHAT_ROOT', dirname(dirname(API_ROOT)));
+}
 
 include dirname(__DIR__).'/autoload.php';
 
@@ -21,7 +27,7 @@ class HC_API {
         return self::$_instance;
     }
 
-    public function __construct(){
+    public function __construct(){    
         $this->config = \API\Controllers\Config::instance();
 
         $this->domain = $this->config->get('domain');
@@ -101,4 +107,5 @@ class HC_API {
     }
 
 }
+
 HC_API::instance()->run();
