@@ -201,6 +201,13 @@ abstract class Request {
             exit;
         }
     
+        if(isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) && !isset($_SERVER['HTTP_AUTHORIZATION']) ){
+            if(strlen($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) > 0){
+                $_SERVER['HTTP_AUTHORIZATION'] = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+                unset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
+            }
+        }
+    
         if(!isset($_SERVER['HTTP_AUTHORIZATION']) || strlen($_SERVER['HTTP_AUTHORIZATION']) <= 0){
             $response = new \API\Models\Response();
             $response->setHttpStatusCode(401);

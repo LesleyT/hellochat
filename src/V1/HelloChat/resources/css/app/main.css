@@ -254,8 +254,10 @@ form.hc__form--message {
     left: 0;
     right: 0;
     width: 100%;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-top: min(5%, 15px);
+    padding-bottom: min(5%, 15px);
     padding-right: 0;
     box-shadow: 0 0 10px 0 #dcdcdc;
     border-top: 1px solid #dedede;
@@ -498,6 +500,7 @@ form.hc__form--intro input {
     border: 2px solid var(--secondary-color);
     font-family: 'Open Sans';
     font-size: 1rem;
+    max-width: 100%;
 }
 
 form.hc__form--intro input[type="submit"] {

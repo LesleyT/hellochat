@@ -3,9 +3,39 @@ export class NotificationManager {
     context;
     supported;
 
+    isActive;
+
+    idleTime;
+    idleInterval;
+    idleLimit;
+
     constructor(context){
         this.context = context;
         this.supported = ('Notification' in window) ? true : false;
+        
+        if(typeof window.ghn == 'undefined'){
+            window.ghn = {
+                isActive : true,
+                idleTime : 0,
+                idleLimit : 1,
+                idleInterval : setInterval(function(){
+                    window.ghn.idleTime++;
+                    if(window.ghn.idleTime > window.ghn.idleLimit){
+                        window.ghn.isActive = false;
+                    }
+                }.bind(this), 30000),
+            };
+    
+            window.onmousemove = function() {
+                window.ghn.isActive = true;
+                window.ghn.idleTime = 0;
+            }.bind(this); 
+    
+            window.onkeypress = function() {
+                window.ghn.isActive = true;
+                window.ghn.idleTime = 0;
+            }.bind(this); 
+        }
     }
 
     askConsent(){
@@ -27,7 +57,7 @@ export class NotificationManager {
         
         if(!this.supported){ return; }
         
-        if(this.context.isActive){ return; } 
+        if(typeof window.ghn != 'undefined' && window.ghn.isActive){ return; } 
         
 
         if (Notification.permission === 'granted') {

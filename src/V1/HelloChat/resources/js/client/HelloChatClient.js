@@ -65,6 +65,9 @@ export class HelloChatClient {
         if(this.isAdmin){
             document.body.appendChild(this.elements.maximize);
         }
+
+        window.addEventListener('blur', this.onWindowBlur.bind(this), true);
+        window.addEventListener('focus', this.onWindowFocus.bind(this), true);
     }
     
     displayMessage(){
@@ -102,6 +105,28 @@ export class HelloChatClient {
         if(this){
             this.parentNode.classList.remove('active');
             setTimeout(function(){ this.remove(); }.bind(this.parentNode), 200);
+        }
+    }
+
+    onWindowBlur(e) {
+        if (document.activeElement.tagName.toLowerCase() == 'iframe') {
+            setTimeout(function(){ this.checkIfInputIsActive(); }.bind(this), 0);
+        }  else {
+            this.elements.screen.classList.remove('focused');
+        }
+    }
+
+    onWindowFocus(e) {
+        this.elements.screen.classList.remove('focused');
+    }
+
+    checkIfInputIsActive(){
+        var input = this.elements.screen.contentWindow.document.getElementsByClassName('hc__form__input');
+        
+        if(input.length > 0 && input[0].classList.contains('active')){
+            this.elements.screen.classList.add('focused');
+        } else {
+            setTimeout(function(){ this.checkIfInputIsActive(); }.bind(this), 500);
         }
     }
 

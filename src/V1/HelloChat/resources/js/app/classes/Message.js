@@ -58,7 +58,7 @@ export class Message{
         if(scrollTo !== false){
             setTimeout(function(){ 
                 this.scrollIntoView({behavior: "smooth", block: "end", inline: "end"});
-            }.bind(message), 100);
+            }.bind(message), 200);
         }
 
         parent.appendChild(message);

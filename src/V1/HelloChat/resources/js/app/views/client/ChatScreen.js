@@ -79,6 +79,17 @@ export class ChatScreen {
                 this.elements.input = document.createElement('textarea');
                 this.elements.input.name = 'message';
                 this.elements.input.placeholder = window.HelloChat.localization.chat.chatMessage;
+                
+                this.elements.input.addEventListener('focus', function(element){
+                    setTimeout(function(){
+                      this.elements.messages.scrollTop = this.elements.messages.scrollHeight;
+                    }.bind(this), 400);
+                    element.parentNode.classList.add('active');
+                }.bind(this, this.elements.input));
+                
+                this.elements.input.addEventListener('blur', function(){
+                    this.parentNode.classList.remove('active');
+                });
                 this.elements.input.addEventListener('input', function(){
                     Textarea.fitToText.call(this.elements.input);
                     if(typeof this.elements.input.parentNode.style.height != 'undefined' && this.elements.input.parentNode.style.height != ''){
@@ -103,8 +114,6 @@ export class ChatScreen {
 
         this.parent.appendChild(this.elements.messages);
         this.parent.appendChild(this.elements.form);
-
-        setTimeout(function(){ this.elements.input.focus(); }.bind(this), 0);
     }
 
     chatUpdateChecker(){
@@ -143,7 +152,6 @@ export class ChatScreen {
             this.elements.input.value = '';
             this.elements.input.parentNode.style.height = '';
             this.elements.messages.style.marginBottom = '';
-            this.elements.input.focus();
             this.setTyping(false);
         } else {
            if(this.maybeCloseChat(response)){ return false; }

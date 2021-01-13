@@ -66,7 +66,7 @@ button.hc__floating_bubble {
     cursor: pointer;
     font-weight: bold;
     font-size: 18px;
-    z-index: 100000000000000;
+    z-index: 999999999;
     background-size: 30px auto;
     background-repeat: no-repeat;
     background-position: center;
@@ -178,12 +178,28 @@ button.hc__maximize__chat {
     
 }
 
+@media screen and (max-width : 991px){
+    iframe.hc__client__frame.active.focused {
+        margin-bottom: 0;
+    }
 
+    iframe.hc__client__frame.active.focused {
+        height: calc(100vh - 65px);
+        height: min(600px, calc(100vh) + 80px - 65px - (max(40px, 2%) * 2));
+    }
+    
+}
 
 @media screen and (max-width : 768px) {
     iframe.hc__client__frame {
         height: calc(100vh - 65px - 80px -50px);
         height: min(600px, calc(100vh) - 65px - 50px - (max(40px, 2%) * 2));
+    }
+
+    
+    iframe.hc__client__frame.active.focused {
+        height: calc(100vh - 65px -50px);
+        height: min(600px, calc(100vh) + 80px - 65px - 50px - (max(40px, 2%) * 2));
     }
 
     iframe.hc__client__frame.maximize {

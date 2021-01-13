@@ -1,12 +1,9 @@
 <?php 
-//notifications not working - test when on server
 
-
-
+//disable if not on ssl
+//
 
 // do frontend error handling
-
-
 
 // maybe receive chat notifications from other chats (while not in that chat)
 // Notification when new user opens a chat
@@ -18,6 +15,9 @@ global $HelloChat;
 
 $version = 'V1';
 
+if(!isset($_SERVER['HTTPS'])){
+	return;
+}
 
 define('HELLO_CHAT_ROOT', dirname(__FILE__));
 define('HELLO_CHAT_VERSION_ROOT', HELLO_CHAT_ROOT. '/'.$version);
